@@ -1,0 +1,572 @@
+:root {
+    color-scheme: dark;
+    --ink: #10110f;
+    --paper: #eae8df;
+    --muted: #9c9b91;
+    --line: rgba(234, 232, 223, 0.18);
+    --accent: #c5a77b;
+    --page-width: 1440px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 32px;
+}
+
+body {
+    margin: 0;
+    background:
+        radial-gradient(ellipse at 50% 18%, rgba(84, 79, 63, 0.12), transparent 34rem),
+        var(--ink);
+    color: var(--paper);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a:focus-visible,
+video:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 5px;
+}
+
+.site-header,
+.site-footer {
+    width: min(var(--page-width), calc(100% - 112px));
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-header {
+    min-height: 88px;
+    border-bottom: 1px solid var(--line);
+}
+
+.wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.wordmark-logo {
+    display: block;
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+    mix-blend-mode: screen;
+}
+
+.wordmark-name {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+}
+
+.wordmark-divider {
+    padding-inline: 5px;
+    color: var(--accent);
+}
+
+.site-nav {
+    display: flex;
+    gap: 39px;
+    color: #c3c1b8;
+    font-size: 12px;
+}
+
+.site-nav a,
+.back-to-top {
+    transition: color 180ms ease;
+}
+
+.site-nav a:hover,
+.back-to-top:hover {
+    color: var(--accent);
+}
+
+.header-note,
+.section-count,
+.artwork-category,
+.artwork-year,
+.motion-index,
+.video-caption,
+.site-footer {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.header-note {
+    color: var(--muted);
+}
+
+.header-note span {
+    margin-left: 9px;
+    color: var(--accent);
+}
+
+.intro,
+.collection,
+.motion-section,
+.archive-section {
+    width: min(var(--page-width), calc(100% - 112px));
+    margin-inline: auto;
+}
+
+.intro {
+    position: relative;
+    padding: clamp(52px, 6vw, 84px) 0 95px;
+}
+
+.intro h1,
+.motion-copy h2,
+.archive-copy h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(54px, 8.6vw, 118px);
+    font-weight: 400;
+    letter-spacing: -0.065em;
+    line-height: 0.98;
+}
+
+.intro h1 em,
+.motion-copy h2 em {
+    color: var(--accent);
+    font-weight: 400;
+}
+
+.intro-bottom {
+    display: flex;
+    width: min(660px, 100%);
+    align-items: end;
+    justify-content: space-between;
+    margin-top: 42px;
+}
+
+.intro-bottom p,
+.motion-description,
+.archive-copy > p:last-child {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.text-link {
+    padding-bottom: 7px;
+    border-bottom: 1px solid var(--line);
+    font-size: 11px;
+}
+
+.text-link span {
+    margin-left: 14px;
+    color: var(--accent);
+}
+
+.intro-index {
+    position: absolute;
+    right: 0;
+    bottom: 99px;
+    color: var(--muted);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+}
+
+.section-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    margin-bottom: 29px;
+}
+
+.section-heading h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: -0.035em;
+}
+
+.section-count {
+    margin: 0 0 5px;
+    color: var(--muted);
+}
+
+.section-count span {
+    padding-inline: 7px;
+    color: var(--accent);
+}
+
+.artwork-list {
+    display: grid;
+    gap: 51px;
+}
+
+.artwork {
+    margin: 0;
+}
+
+.artwork-frame {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(234, 232, 223, 0.13);
+    background:
+        radial-gradient(ellipse at 50% 110%, rgba(197, 167, 123, 0.2), transparent 55%),
+        #1b1b18;
+}
+
+.artwork-frame::after {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    content: "";
+    pointer-events: none;
+}
+
+.artwork-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 650ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.artwork:hover .artwork-frame img {
+    transform: scale(1.015);
+}
+
+.artwork-number {
+    position: absolute;
+    z-index: 2;
+    top: 16px;
+    left: 17px;
+    color: rgba(255, 255, 255, 0.78);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 12px;
+    text-shadow: 0 1px 7px rgba(0, 0, 0, 0.8);
+}
+
+.artwork-caption {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    padding: 17px 1px 0;
+}
+
+.artwork-category {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.artwork-caption h3 {
+    margin: 7px 0 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.025em;
+}
+
+.artwork-year {
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.artwork-year span {
+    margin-left: 8px;
+    color: var(--accent);
+}
+
+.motion-section {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    align-items: center;
+    gap: 8%;
+    margin-top: clamp(120px, 18vw, 230px);
+    padding-block: 74px;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+.motion-copy h2 {
+    margin-top: 25px;
+    font-size: clamp(42px, 5.2vw, 72px);
+    line-height: 1.04;
+}
+
+.motion-description {
+    max-width: 310px;
+    margin-top: 23px;
+}
+
+.motion-index {
+    display: inline-block;
+    margin-top: 37px;
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.motion-index span {
+    padding-inline: 5px;
+    color: var(--accent);
+}
+
+.video-frame {
+    padding: 9px;
+    border: 1px solid rgba(234, 232, 223, 0.17);
+    background: rgba(255, 255, 255, 0.025);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+}
+
+.video-frame video {
+    display: block;
+    width: 100%;
+    background: #080808;
+}
+
+.video-caption {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 3px 4px;
+    color: var(--muted);
+    font-size: 8px;
+}
+
+.video-caption span {
+    color: var(--accent);
+}
+
+.archive-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding-block: clamp(90px, 13vw, 165px);
+}
+
+.archive-copy h2 {
+    margin-top: 19px;
+    font-size: clamp(39px, 5.4vw, 70px);
+    line-height: 1.05;
+}
+
+.archive-copy > p:last-child {
+    margin-top: 17px;
+}
+
+.archive-link {
+    display: flex;
+    min-width: 270px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 18px 19px;
+    border: 1px solid rgba(197, 167, 123, 0.65);
+    font-size: 11px;
+    transition: background-color 180ms ease, color 180ms ease;
+}
+
+.archive-link:hover {
+    background: var(--accent);
+    color: var(--ink);
+}
+
+.archive-arrow {
+    font-size: 17px;
+}
+
+.site-footer {
+    min-height: 83px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.wordmark-footer .wordmark-logo {
+    width: 35px;
+    height: 35px;
+}
+
+.wordmark-footer .wordmark-name {
+    font-size: 8px;
+}
+
+.back-to-top {
+    color: var(--paper);
+}
+
+@media (min-width: 1600px) {
+    .artwork-list {
+        gap: 65px;
+    }
+}
+
+@media (max-width: 760px) {
+    .site-header,
+    .site-footer,
+    .intro,
+    .collection,
+    .motion-section,
+    .archive-section {
+        width: calc(100% - 40px);
+    }
+
+    .site-header {
+        min-height: 72px;
+    }
+
+    .site-nav {
+        gap: 18px;
+        font-size: 10px;
+    }
+
+    .header-note {
+        display: none;
+    }
+
+    .intro {
+        padding-block: 58px 76px;
+    }
+
+    .intro h1 {
+        font-size: clamp(53px, 11vw, 82px);
+    }
+
+    .intro-index {
+        bottom: 31px;
+        font-size: 11px;
+    }
+
+    .section-heading h2 {
+        font-size: 25px;
+    }
+
+    .artwork-list {
+        gap: 39px;
+    }
+
+    .motion-section {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        margin-top: 110px;
+        padding-block: 52px;
+    }
+
+    .motion-copy h2 {
+        font-size: clamp(46px, 10vw, 65px);
+    }
+
+    .motion-index {
+        margin-top: 22px;
+    }
+
+    .archive-section {
+        align-items: start;
+        flex-direction: column;
+        padding-block: 90px;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-header,
+    .site-footer,
+    .intro,
+    .collection,
+    .motion-section,
+    .archive-section {
+        width: calc(100% - 32px);
+    }
+
+    .wordmark {
+        gap: 7px;
+    }
+
+    .wordmark-logo {
+        width: 39px;
+        height: 39px;
+    }
+
+    .wordmark-name {
+        font-size: 8px;
+    }
+
+    .site-nav {
+        gap: 12px;
+        font-size: 9px;
+    }
+
+    .intro {
+        padding-top: 44px;
+    }
+
+    .intro h1 {
+        font-size: clamp(47px, 12vw, 59px);
+    }
+
+    .intro-bottom {
+        align-items: start;
+        flex-direction: column;
+        gap: 23px;
+        margin-top: 29px;
+    }
+
+    .section-heading {
+        align-items: start;
+        flex-direction: column;
+        gap: 13px;
+    }
+
+    .section-count {
+        margin: 0;
+    }
+
+    .artwork-caption h3 {
+        font-size: 19px;
+    }
+
+    .artwork-year {
+        max-width: 105px;
+        text-align: right;
+        line-height: 1.6;
+    }
+
+    .video-frame {
+        padding: 6px;
+    }
+
+    .video-caption {
+        letter-spacing: 0.06em;
+    }
+
+    .archive-link {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .site-footer {
+        min-height: 74px;
+    }
+
+    .site-footer > span {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
